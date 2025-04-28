@@ -1,0 +1,21 @@
+CC = gcc
+CFLAGS = -Wall -Wextra -g
+
+# Default target
+all: test_process_state
+
+# Link object files into final binary
+test_process_state: test_process_state.o process_state.o
+	$(CC) $(CFLAGS) -o test_process_state test_process_state.o process_state.o
+
+# Compile source files into object files
+test_process_state.o: test_process_state.c
+	$(CC) $(CFLAGS) -c test_process_state.c -o test_process_state.o
+
+process_state.o: process_state.c
+	$(CC) $(CFLAGS) -c process_state.c -o process_state.o
+
+# Clean up compiled files
+.PHONY: clean
+clean:
+	rm -f *.o test_process_state

@@ -1,0 +1,15 @@
+CC = gcc
+CFLAGS = -Wall -Wextra -g
+
+# Default target
+all: signal-example
+
+signal-example: signal-example.o
+	$(CC) $(CFLAGS) -o signal-example signal-example.o
+
+signal-example.o: signal-example.c
+	$(CC) $(CFLAGS) -c signal-example.c -o signal-example.o
+
+.PHONY: clean
+clean:
+	rm -f *.o signal-example

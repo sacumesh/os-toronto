@@ -1,0 +1,15 @@
+CC = gcc
+CFLAGS = -Wall -Wextra -g
+
+# Default target
+all: read-write-example
+
+read-write-example: read-write-example.o
+	$(CC) $(CFLAGS) -o read-write-example read-write-example.o
+
+read-write-example.o: read-write-example.c
+	$(CC) $(CFLAGS) -c read-write-example.c -o read-write-example.o
+
+.PHONY: clean
+clean:
+	rm -f *.o wait-example

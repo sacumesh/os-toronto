@@ -1,0 +1,15 @@
+CC = gcc
+CFLAGS = -Wall -Wextra -g
+
+# Default target
+all: open-example
+
+open-example: open-example.o
+	$(CC) $(CFLAGS) -o open-example open-example.o
+
+open-example.o: open-example.c
+	$(CC) $(CFLAGS) -c open-example.c -o open-example.o
+
+.PHONY: clean
+clean:
+	rm -f *.o wait-example

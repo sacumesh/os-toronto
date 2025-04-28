@@ -1,0 +1,18 @@
+CC = gcc
+CFLAGS = -Wall -Wextra -g
+
+# Default target
+all: wait-example
+
+wait-example: wait-example.o process_state.o
+	$(CC) $(CFLAGS) -o wait-example wait-example.o process_state.o
+
+wait-example.o: wait-example.c
+	$(CC) $(CFLAGS) -c wait-example.c -o wait-example.o
+
+process_state.o: process_state.c
+	$(CC) $(CFLAGS) -c process_state.c -o process_state.o
+
+.PHONY: clean
+clean:
+	rm -f *.o wait-example
